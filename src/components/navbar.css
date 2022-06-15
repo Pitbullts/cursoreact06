@@ -1,0 +1,46 @@
+header {
+    background-color: grey;
+    display: flex;
+    max-width: 100%;
+    max-height: 50%;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-bg {
+    background-color: var(--secundario);
+    width: 100%; }
+ 
+    .NavPrincipal {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between; 
+        max-width: 140rem;
+        margin: 0 auto;
+        color: white;
+    }
+
+    .logo-img {
+        max-width: 15rem;
+        max-height: 5rem;
+        
+    }
+    
+    .container-linka {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 1rem;
+        gap: 1rem;
+
+        font-size: 2rem;
+    }
+    
+    .PiruloName {
+        margin-right: 35rem;
+        font-size: 2rem;
+    }
