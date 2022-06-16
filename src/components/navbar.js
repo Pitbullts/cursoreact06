@@ -1,5 +1,6 @@
 import "./navbar.css";
 import logo from "../assets/pirulologo.png";
+import CartWidget from "./CartWidget";
 function NavBar() {
   return (
     <header>
@@ -15,6 +16,7 @@ function NavBar() {
 
             <a href="https://netflix.com">Contacto</a>
           </div>
+          <CartWidget />
         </nav>
       </div>
     </header>
