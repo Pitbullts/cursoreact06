@@ -2,12 +2,15 @@ import React from "react";
 import { useState } from "react";
 import './ItemCount.css';
 
-function ItemCount() {
+
+function ItemCount({initial, stock}) {
 
     const [count, setCount] = useState(0)
 
+
+
 const addCount =()=> {
-    if (count < 15) {
+    if (count < stock) {
         setCount(count+1)
     }
     
@@ -16,7 +19,7 @@ const addCount =()=> {
 
 const removeCount =()=> {
 
-        if (count > 0 )
+        if (count > initial )
         {
             setCount(count -1)
         }
@@ -35,7 +38,7 @@ return (
         <button onClick={removeCount}>Restar -</button>
 
     </div>
-        <button onClick = {restartCount}> REINICIAR VALORES </button>
+        <button onClick = {restartCount}> Agregar al Carrito (No funcional momentaneamente) </button>
     </div>
 )
 
