@@ -1,0 +1,7 @@
+.card {
+    max-width: 40%;
+    height: auto;
+}
+.card-header {
+    font-size: 2rem;
+}
