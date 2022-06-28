@@ -1,14 +1,14 @@
 import './index.css';
-import NavBar from './components/navbar';
-import MainPage from './components/mainPage';
-import ItemListContainer from './components/ItemListContainer';
+import NavBar from './components/jsx/navbar/navbar';
+import MainPage from './components/jsx/body/mainPage';
+import ItemListContainer from './components/jsx/body/ItemListContainer';
 
 function App() {
     return (
         <div>
         <NavBar />
         <MainPage />
-        <ItemListContainer widget='buenos dias, noches y buen finde al tutor por si las dudas digo que esto es un saludo' />
+        <ItemListContainer />
 
         </div>
     )

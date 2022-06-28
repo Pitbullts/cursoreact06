@@ -1,4 +1,4 @@
-import imgs from "../assets/img/items/itemsImg"
+import imgs from "../../../assets/img/items/itemsImg";
 
 const productos = [
   { id: 0, nombre: "RTX 3090", imagenID: imgs["img-3090"], imagenALT:"Imagen RTX 3090", precio: 4500, stock: 10, },
@@ -9,7 +9,6 @@ const productos = [
 ];
 
 
-//  a f     const TraerProductos = new Promise((resolve))
 export const getProduct = new Promise((resolve, reject) => {
   let condicion = true; 
   if (condicion) {

@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import './ItemCount.css';
 
 
 function ItemCount({initial, stock}) {
@@ -46,37 +45,3 @@ return (
 }
 
 export default ItemCount; 
-
-// Habia hecho estos dos, pero despues me vi en el chat el de manu y dije fua, y yo me la re complique.
-
-/*
-const removeCount =()=> {
-
-    if (count <= 0)
-    {
-         setCount(count+1);
-    }
-    else {
-        setCount(count-1)
-    }
-    return removeCount
-}
-
-
-Eran dos alternativas que ninguna me cerraba, la de arriba, si le volvia a dar restar me daba un 1 y la de abajo me funcionaba pero me tiraba muchos errores en la consola del navegador.
-
-const removeCount =()=> {
-
-    if (count <= 0)
-    {
-         setCount(count(0));
-    }
-    else {
-        setCount(count-1)
-    }
-    return removeCount
-}
-
-
-
-*/

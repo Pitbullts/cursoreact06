@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./ItemCount.css";
+import "../../css/card/AddCarrito.css";
 
 function AddCarrito({ initial, stock }) {
   const [count, setCount] = useState(0);

@@ -1,5 +1,5 @@
-import "./navbar.css";
-import logo from "../assets/pirulologo.png";
+import "../../css/navbar/navbar.css";
+import logo from "../../../assets/pirulologo.png";
 import CartWidget from "./CartWidget";
 function NavBar() {
   return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "./Item";
-import './Card.css';
+import '../../css/card/Card.css';
 import AddCarrito from './AddCarrito';
 
 function Card() {
@@ -16,7 +16,7 @@ function Card() {
   
   
     return (
-        <div className="container-cards">
+        <div>
         { loading ? <h3> Los productos estan siendo cargados, por favor, aguarde...</h3>
             :
         productos.map(prod => <div key={prod.id}>
