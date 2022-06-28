@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "./Item";
 import './Card.css';
+import AddCarrito from './AddCarrito';
 
 function Card() {
     const [productos, setProductos] = useState([]);
@@ -15,17 +16,18 @@ function Card() {
   
   
     return (
-        <div className="Center">
+        <div className="container-cards">
         { loading ? <h3> Los productos estan siendo cargados, por favor, aguarde...</h3>
             :
         productos.map(prod => <div key={prod.id}>
-                                    <div className="card m-1">
+                                    <div className="card m1">
                                         <div className="card-header">
                                             {`${prod.nombre} - ID:    ${prod.id}`}
                                         </div>
                                             <div className="card-body">
                                                 <img src={prod.imagenID} alt={prod.imagenALT}></img>
                                                 <p>Precio: ${prod.precio} USD</p>
+                                                <AddCarrito stock={prod.stock} initial = "0" />
                                             </div>
                                 </div>  
                                 </div> 
