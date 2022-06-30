@@ -1,15 +1,15 @@
 import MainPage from '../../components/jsx/body/mainPage';
-
+import ItemListContainer from '../../components/jsx/body/ItemListContainer';
 import NavBar from '../../components/jsx/navbar/navbar';
 
-function Home() {
+function Catalogo() {
 
     return(
             <div>
                 <NavBar />
                 <MainPage />
                 
-                <h1 className='center'>Dirigite a el catalogo.</h1>
+                <ItemListContainer />
 
 
                 
@@ -17,4 +17,4 @@ function Home() {
             </div>
     )
 }
-export default Home;
+export default Catalogo;

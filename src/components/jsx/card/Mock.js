@@ -20,3 +20,4 @@ export const getProducts = new Promise((resolve, reject) => {
   }
   console.log(productos);
 });
+

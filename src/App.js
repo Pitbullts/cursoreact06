@@ -1,15 +1,20 @@
+import { Routes, Route } from 'react-router-dom';
 import './index.css';
 import NavBar from './components/jsx/navbar/navbar';
 import Home from './pages/home/Home';
-import { Routes, Route } from 'react-router-dom';
+import Catalogo from './pages/Catalogo/Catalogo';
+import NotFound from './pages/NotFound';
 
 function App() {
     return (
         <div>
         
         <Routes>
-            <Route path="/" element={<NavBar />} ></Route>
+            <Route path="/" element={<NavBar />} />
             <Route path="/home" element={<Home />}/>
+            <Route path="/catalogo" element={<Catalogo />}/>
+            <Route path="/catalogo/:productID" element={<Catalogo />}/>
+            <Route path="*" element={<NotFound />}/>
         </Routes>
         
 

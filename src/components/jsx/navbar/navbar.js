@@ -1,19 +1,19 @@
 import "../../css/navbar/navbar.css";
 import logo from "../../../assets/pirulologo.png";
 import CartWidget from "./CartWidget";
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 function NavBar() {
   return (
     <header>
       <div className="nav-bg">
         
         <nav className="NavPrincipal">
-        <img src={logo} className="logo-img" alt="img logo" />
-          <h1 className="PiruloName">Tienda Pirulo</h1>
+        <Link to="/home"> <img src={logo} className="logo-img" alt="img logo" /> </Link>
+          <Link to="/home"><h1 className="PiruloName">Tienda Pirulo</h1> </Link>
           <div className="container-linka">
-            <a href="https://netflix.com">Catalogo</a>
+            <NavLink to="/catalogo">Catalogo</NavLink>
 
-            <Link to="/home">Home</Link>
+            <NavLink to="/home">Home</NavLink>
 
             <a href="https://netflix.com">Contacto</a>
           </div>
