@@ -1,6 +1,7 @@
 import "../../css/navbar/navbar.css";
 import logo from "../../../assets/pirulologo.png";
 import CartWidget from "./CartWidget";
+import {Link} from 'react-router-dom'
 function NavBar() {
   return (
     <header>
@@ -12,7 +13,7 @@ function NavBar() {
           <div className="container-linka">
             <a href="https://netflix.com">Catalogo</a>
 
-            <a href="https://netflix.com">Somos</a>
+            <Link to="/home">Home</Link>
 
             <a href="https://netflix.com">Contacto</a>
           </div>

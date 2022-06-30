@@ -1,12 +1,12 @@
 import React from "react";
-import Card from "./Card";
+import Item from "./Item";
 
 function ItemList() {
 
 
   return (
       <div className="Center">
-            <Card /> 
+            <Item /> 
         </div>
   );
 }

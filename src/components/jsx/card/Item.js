@@ -1,22 +1,39 @@
-import imgs from "../../../assets/img/items/itemsImg";
+import React, { useState, useEffect } from "react";
+import { getProducts } from "./Mock";
+import '../../css/card/Mock.css';
+import AddCarrito from './AddCarrito';
 
-const productos = [
-  { id: 0, nombre: "RTX 3090", imagenID: imgs["img-3090"], imagenALT:"Imagen RTX 3090", precio: 4500, stock: 10, },
-  { id: 1, nombre: "RTX 3080", imagenID: imgs["img-3080"],  imagenALT:"Imagen RTX 3080", precio: 4000, stock: 5,},
-  { id: 2, nombre: "RTX 3070", imagenID: imgs["img-3070"],  imagenALT:"Imagen RTX 3070", precio: 3500, stock: 7,},
-  { id: 3, nombre: "RTX 3060", imagenID: imgs["img-3060"],  imagenALT:"Imagen RTX 3060", precio: 3000, stock: 8 ,},
+function Card() {
+    const [productos, setProductos] = useState([]);
+    const [loading, setLoading] = useState(true)
+  
+    useEffect(() => {
+      getProducts
+        .then((resp) => setProductos(resp))
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false));
+    }, []);
+  
+  
+    return (
+        <div>
+        { loading ? <h3> Los productos estan siendo cargados, por favor, aguarde...</h3>
+            :
+        productos.map(prod => <div key={prod.id}>
+                                    <div className="card m1">
+                                        <div className="card-header">
+                                            {`${prod.nombre} - ID:    ${prod.id}`}
+                                        </div>
+                                            <div className="card-body">
+                                                <img src={prod.imagenID} alt={prod.imagenALT}></img>
+                                                <p>Precio: ${prod.precio} USD</p>
+                                                <AddCarrito stock={prod.stock} initial = "0" />
+                                            </div>
+                                </div>  
+                                </div> 
+                                    )}
+    </div>
+    );
+}
 
-];
-
-
-export const getProduct = new Promise((resolve, reject) => {
-  let condicion = true; 
-  if (condicion) {
-    setTimeout(() => {
-      resolve(productos);
-    }, 2000);
-  } else {
-    reject("error");
-  }
-  console.log(productos);
-});
+export default Card;
