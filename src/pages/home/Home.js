@@ -1,15 +1,13 @@
-import MainPage from '../../components/jsx/body/mainPage';
-
-import NavBar from '../../components/jsx/navbar/navbar';
+import {Link} from 'react-router-dom'
 
 function Home() {
 
     return(
             <div>
-                <NavBar />
-                <MainPage />
+
                 
                 <h1 className='center'>Dirigite a el catalogo.</h1>
+                <Link to="/catalogo" className='text-center text-muted'><p>Catalogo</p></Link>
 
 
                 

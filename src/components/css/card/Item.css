@@ -1,0 +1,32 @@
+
+.small-img {
+    max-height: 10rem;
+    max-width: 25rem;
+  }
+  .flex-rowww {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    gap: 1rem;
+    margin: 1rem 1rem 1rem;
+    justify-content: flex-start;
+  }
+  .activeClass {
+    color: rgb(79, 151, 19);
+    font-size: 25px;
+    flex-direction: column;
+  }
+
+  .border {
+    display: flex;
+    margin: 5rem; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: 7px 6px 12px -1px rgba(255, 0, 0, 0.77);
+    -webkit-box-shadow: 7px 6px 12px -1px rgb(10, 19, 137);
+    -moz-box-shadow: 7px 6px 12px -1px rgb(255, 0, 0);
+  }

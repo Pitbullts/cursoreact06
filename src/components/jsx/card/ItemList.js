@@ -1,14 +1,12 @@
-import React from "react";
-import Item from "./Item";
+import React from 'react';
+import { Item } from './Item';
 
-function ItemList() {
-
-
+export const ItemList = ({ items }) => {
   return (
-      <div className="Center">
-            <Item /> 
-        </div>
+    <section className="flex-rowww">
+      {items?.map((item) => (
+        <Item {...item} key={item.id} />
+      ))}
+    </section>
   );
-}
-
-export default ItemList;
+};

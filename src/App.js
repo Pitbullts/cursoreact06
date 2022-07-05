@@ -1,28 +1,29 @@
-import { Routes, Route } from 'react-router-dom';
-import './index.css';
+import React from 'react';
+
+
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/jsx/navbar/navbar';
-import Home from './pages/home/Home';
-import Catalogo from './pages/Catalogo/Catalogo';
-import NotFound from './pages/NotFound';
-import Detail from './components/jsx/Detail/Detail';
+import MainPage from './components/jsx/body/mainPage'
+import { ItemListContainer } from './components/jsx/card/ItemListContainer';
+import { ItemDetailContainer } from './components/jsx/Detail/ItemDetailContainer';
+import NotFound from './pages/NotFound'
+import Home from './pages/home/Home'
+export default function App() {
+  return (
 
-function App() {
-    return (
-        <div>
-        
-        <Routes>
-            <Route path="/" element={<NavBar />} />
-            <Route path="/home" element={<Home />}/>
-            <Route path="/catalogo" element={<Catalogo />}/>
-            <Route path="/catalogo/:productID" element={<Detail />}/>
-            <Route path="*" element={<NotFound />}/>
-        </Routes>
-        
+    <BrowserRouter>
 
-        </div>
-    )
+      <NavBar />
+      <MainPage />
 
 
+      <Routes>
+      <Route path="/home" element={<Home />} />
+        <Route path="/catalogo" element={<ItemListContainer greeting={'Nuestro Catalogo'} />} />
+        <Route path="/product/:productoId" element={<ItemDetailContainer />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App;

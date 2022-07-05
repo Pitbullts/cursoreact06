@@ -1,39 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { getProducts } from "./Mock";
-import '../../css/card/Mock.css';
-import AddCarrito from './AddCarrito';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import ItemCount from './ItemCount';
+import '../../css/card/Item.css'
 
-function Card() {
-    const [productos, setProductos] = useState([]);
-    const [loading, setLoading] = useState(true)
-  
-    useEffect(() => {
-      getProducts
-        .then((resp) => setProductos(resp))
-        .catch((err) => console.log(err))
-        .finally(() => setLoading(false));
-    }, []);
-  
-  
-    return (
-        <div>
-        { loading ? <h3> Los productos estan siendo cargados, por favor, aguarde...</h3>
-            :
-        productos.map(prod => <div key={prod.id}>
-                                    <div className="card m1">
-                                        <div className="card-header">
-                                            {`${prod.nombre} - ID:    ${prod.id}`}
-                                        </div>
-                                            <div className="card-body">
-                                                <img src={prod.imagenID} alt={prod.imagenALT}></img>
-                                                <p>Precio: ${prod.precio} USD</p>
-                                                <AddCarrito stock={prod.stock} initial = "0" />
-                                            </div>
-                                </div>  
-                                </div> 
-                                    )}
+export const Item = ({ id, nombre, categoria, imagenID, precio,imagenALT, stock }) => {
+  return (
+    <>
+    <div className='card text-center cards-format'>
+    <Link to={`/product/${id}`}>
+      <div className={` ${categoria}-categoria`} >
+      <span>
+          <img src={imagenID} alt={imagenALT} className="card-img-tiles small-img"/>
+        </span>
+        <p className='card-title text-muted'>{nombre}</p>
+        <p className='text-muted'>{categoria}</p>
+        <p className='text-muted'>${precio}</p>
+        
+      </div>
+    </Link>
+    <ItemCount stock={stock} initial="0"/>
     </div>
-    );
-}
-
-export default Card;
+    </>
+  );
+};

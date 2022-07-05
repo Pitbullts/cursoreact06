@@ -11,11 +11,15 @@ function NavBar() {
         <Link to="/home"> <img src={logo} className="logo-img" alt="img logo" /> </Link>
           <Link to="/home"><h1 className="PiruloName">Tienda Pirulo</h1> </Link>
           <div className="container-linka">
-            <NavLink to="/catalogo">Catalogo</NavLink>
+            <NavLink to="/catalogo"  className={({ isActive }) =>
+    isActive ? 'activeLink' : 'inactive'
+  } >Catalogo</NavLink>
 
-            <NavLink to="/home">Home</NavLink>
+            <NavLink to="/home" className={({ isActive }) =>
+    isActive ? 'activeLink' : 'inactive'
+  }>Home</NavLink>
 
-            <a href="https://netflix.com">Contacto</a>
+            <a href="https://google.com">Contacto</a>
           </div>
           <CartWidget />
         </nav>
