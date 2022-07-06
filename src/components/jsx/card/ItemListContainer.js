@@ -1,26 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { ItemList } from './ItemList';
-import { productos } from '../../data/data';
+import React, { useState, useEffect } from "react";
+import { ItemList } from "./ItemList";
+import { productos } from "../../data/data";
 
-
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 export const ItemListContainer = ({ greeting }) => {
   const [items, setItems] = useState([]);
 
-
   const [loading, setLoading] = useState(true);
-
 
   const { categoriaID } = useParams();
 
   useEffect(() => {
-
     setLoading(true);
     const getProducts = new Promise((resolve) => {
       setTimeout(() => {
- 
-        const myPruducts = productos
+        const myPruducts = categoriaID
+          ? productos.filter((item) => item.categoria === categoriaID)
+          : productos;
 
         resolve(myPruducts);
       }, 1000);
@@ -33,12 +30,11 @@ export const ItemListContainer = ({ greeting }) => {
       .finally(() => setLoading(false));
   }, [categoriaID]);
 
-
   return loading ? (
     <h2>CARGANDO...</h2>
   ) : (
     <>
-      <h3 style={{ textAlign: 'center' }}>{greeting}</h3>
+      <h3 style={{ textAlign: "center" }}>{greeting}</h3>
       <ItemList items={items} />
     </>
   );

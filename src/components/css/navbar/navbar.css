@@ -12,47 +12,50 @@ a {
 
 .nav-bg {
     background-color: var(--secundario);
-    width: 100%; }
- 
-    .NavPrincipal {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between; 
-        max-width: 140rem;
-        margin: 0 auto;
-        color: white;
-    }
+    width: 100%;
+}
 
-    .logo-img {
-        max-width: 15rem;
-        max-height: 5rem;
-        
-    }
-    
-    .container-linka {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding: 1rem;
-        gap: 1rem;
+.NavPrincipal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 140rem;
+    margin: 0 auto;
+    color: white;
+}
 
-        font-size: 2rem;
-    }
-    
-    .PiruloName {
-        margin-right: 35rem;
-        font-size: 2rem;
-    }
-    #carrito {
-        width: 10;
-        height: 10rem;
-    }
-    .activeLink {
-        font-size: 2.5rem;
-        width: 10rem;
-        text-align: center;
-        border-radius: 1rem;
-        -webkit-box-shadow: 1px 6px 26px 5px rgba(0,0,0,0.44); 
-box-shadow: 1px 6px 26px 5px rgba(0,0,0,0.44);
-    }
+.logo-img {
+    max-width: 15rem;
+    max-height: 5rem;
+
+}
+
+.container-linka {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+    gap: 1rem;
+
+    font-size: 2rem;
+}
+
+.PiruloName {
+    margin-right: 35rem;
+    font-size: 2rem;
+}
+
+#carrito {
+    width: 10;
+    height: 10rem;
+}
+
+.activeLink {
+    font-size: 2.5rem;
+    width: 10rem;
+    text-align: center;
+    border-radius: 1rem;
+    -webkit-box-shadow: 1px 6px 26px 5px rgba(0, 0, 0, 0.44);
+    box-shadow: 1px 6px 26px 5px rgba(0, 0, 0, 0.44);
+}
