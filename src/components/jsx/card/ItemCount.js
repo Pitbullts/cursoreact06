@@ -53,7 +53,7 @@ function AddCarrito({ initial, stock, onAdd }) {
         </div>
 
         <div>
-          <button onAdd={()=> onAdd(count)} className="btn btn-success">
+          <button onClick={()=> onAdd(count)} className="btn btn-success">
 
             Agregar al carrito
           </button>

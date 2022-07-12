@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ItemCount from './ItemCount';
 import '../../css/card/Item.css'
 
 export const Item = ({ id, nombre, categoria, imagenID, precio,imagenALT, stock }) => {
@@ -18,7 +17,6 @@ export const Item = ({ id, nombre, categoria, imagenID, precio,imagenALT, stock 
         
       </div>
     </Link>
-    <ItemCount stock={stock} initial="0"/>
     </div>
     </>
   );

@@ -14,6 +14,7 @@ export const ItemDetail = ({
   stock,
 }) => {
 
+  
   const onAdd = quantity => { console.log(`cantidad: ${quantity}`)};
 
   //   <button onClick={() => console.log(nombre + space + id + space + precio + space + "test")} className="btn btn-success">
