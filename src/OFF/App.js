@@ -20,7 +20,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />}/>
                 <Route path="/catalogo" element={<Catalogo />}/>
-
+                <Route path="/productos/cart" element={<CartPage />} />
                 <Route path="*" element={<NotFound />}/>
             </Routes>
         </BrowserRouter>

@@ -1,8 +1,9 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "../../css/card/ItemCount.css";
 
-function AddCarrito({ initial, stock }) {
+
+
+function AddCarrito({ initial, stock, onAdd }) {
   const [count, setCount] = useState(0);
 
   const addCount = () => {
@@ -13,14 +14,14 @@ function AddCarrito({ initial, stock }) {
 
   const removeCount = () => {
     if (count > initial) {
-      setCount(count - 1);
+      setCount(  - 1);
     }
   };
   const restartCount = () => {
     setCount(0);
   };
-
-  return (
+ 
+  return (  
     <div>
       <div>
         <div className="contador">
@@ -52,9 +53,9 @@ function AddCarrito({ initial, stock }) {
         </div>
 
         <div>
-          <button onClick={restartCount} className="btn btn-success">
-            {" "}
-            Agregar al Carrito (No funcional momentaneamente)
+          <button onAdd={()=> onAdd(count)} className="btn btn-success">
+
+            Agregar al carrito
           </button>
         </div>
       </div>

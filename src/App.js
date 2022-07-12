@@ -7,6 +7,7 @@ import { ItemListContainer } from "./components/jsx/card/ItemListContainer";
 import { ItemDetailContainer } from "./components/jsx/Detail/ItemDetailContainer";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/home/Home";
+import CartPage from "./pages/CartPage";
 export default function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ export default function App() {
           path="/catalogo"
           element={<ItemListContainer greeting={"Nuestro Catalogo"} />}
         />
+        <Route path="/cartpage" element={<CartPage />} />
         <Route
           path="/category/:categoriaID"
           element={<ItemListContainer greeting={"Items Filtrados"} />}
