@@ -14,8 +14,9 @@ function AddCarrito({ initial, stock, onAdd }) {
 
   const removeCount = () => {
     if (count > initial) {
-      setCount(  - 1);
+      setCount(count - 1);
     }
+ 
   };
   const restartCount = () => {
     setCount(0);
@@ -29,6 +30,7 @@ function AddCarrito({ initial, stock, onAdd }) {
             type="button"
             className="btn btn-info btn-modif-1"
             onClick={addCount}
+            disabled={count === stock ? true : null}
           >
             Sumar +
           </button>

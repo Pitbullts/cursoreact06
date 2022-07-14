@@ -2,6 +2,7 @@ import React from "react";
 import ItemCount from "../card/ItemCount";
 import "../../css/card/Item.css";
 import {Link} from 'react-router-dom';
+import { useContext, useEffect, useState} from 'react';
 
 export const ItemDetail = ({
   id,
@@ -12,10 +13,20 @@ export const ItemDetail = ({
   descripcion,
   imagenALT,
   stock,
+  caja,
 }) => {
 
+const { addToCart } = useContext(CartContext)
+const [purchasedCompleted, setPurchaseCompleted] = useState(false);
+
+
   
-  const onAdd = quantity => { console.log(`cantidad: ${quantity}`)};
+  const onAdd = (count) => {
+
+    setPurchaseCompleted(true);
+    addToCart(props.id, count);
+  }
+
 
   //   <button onClick={() => console.log(nombre + space + id + space + precio + space + "test")} className="btn btn-success">
   return (
@@ -27,7 +38,7 @@ export const ItemDetail = ({
         <p>Descripcion: {descripcion}</p>
         <p>Categoria: {categoria}</p>
         <h2>Precio: ${precio}</h2>
-        <ItemCount stock={stock} initial="0"  onAdd={onAdd} />
+        <ItemCount stock={stock} initial="1" onAdd={onAdd && AddCarrito} />
 
        <Link to="/cartpage"> <button className="btn btn-success">Terminar mi compra</button></Link>
       </section>

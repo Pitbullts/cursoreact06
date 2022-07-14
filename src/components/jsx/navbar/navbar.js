@@ -32,8 +32,14 @@ function NavBar() {
             >
               Home
             </NavLink>
-
-            <a href="https://google.com">Contacto</a>
+            <NavLink
+              to="/contacto"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "inactive"
+              }
+            >
+              Contacto
+            </NavLink>
           </div>
           <CartWidget />
         </nav>

@@ -8,6 +8,8 @@ import { ItemDetailContainer } from "./components/jsx/Detail/ItemDetailContainer
 import NotFound from "./pages/NotFound";
 import Home from "./pages/home/Home";
 import CartPage from "./pages/CartPage";
+import Contacto from './pages/Contacto';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -25,6 +27,10 @@ export default function App() {
           path="/category/:categoriaID"
           element={<ItemListContainer greeting={"Items Filtrados"} />}
         />
+        <Route 
+        path="/contacto"
+        element={<Contacto />}/>
+
         <Route path="/product/:productoId" element={<ItemDetailContainer />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -10,6 +10,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 4500,
     stock: 10,
+    caja: 0
   },
   {
     id: "1",
@@ -20,6 +21,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 4000,
     stock: 5,
+    caja: 0
   },
   {
     id: "2",
@@ -30,6 +32,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 3500,
     stock: 7,
+    caja: 0
   },
   {
     id: "3",
@@ -40,6 +43,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 3000,
     stock: 8,
+    caja: 0
   },
   {
     id: "4",
@@ -50,6 +54,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 2750,
     stock: 5,
+    caja: 0
   },
   {
     id: "5",
@@ -60,6 +65,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 2500,
     stock: 3,
+    caja: 0
   },
   {
     id: "6",
@@ -70,6 +76,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 2500,
     stock: 2,
+    caja: 0
   },
   {
     id: "7",
@@ -80,6 +87,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 2500,
     stock: 4,
+    caja: 0
   },
   {
     id: "8",
@@ -90,6 +98,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 2500,
     stock: 7,
+    caja: 0
   },
   {
     id: "9",
@@ -100,6 +109,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 2500,
     stock: 12,
+    caja: 0
   },
   {
     id: "10",
@@ -110,6 +120,7 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 2000,
     stock: 6,
+    caja: 0
   },
   {
     id: "11",
@@ -120,5 +131,6 @@ export const productos = [
     descripcion: "Descripcion del objeto",
     precio: 2500,
     stock: 18,
+    caja: 0
   },
 ];
