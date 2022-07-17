@@ -9,15 +9,18 @@ import NotFound from "./pages/NotFound";
 import Home from "./pages/home/Home";
 import CartPage from "./pages/CartPage";
 import Contacto from './pages/Contacto';
+import { CartProvider} from './pages/context/CartContext';
 
 export default function App() {
   return (
+    <CartProvider >
     <BrowserRouter>
       <NavBar />
       <MainPage />
 
       <Routes>
         <Route path="/home" element={<Home />} />
+
         <Route
           path="/catalogo"
           element={<ItemListContainer greeting={"Nuestro Catalogo"} />}
@@ -27,6 +30,7 @@ export default function App() {
           path="/category/:categoriaID"
           element={<ItemListContainer greeting={"Items Filtrados"} />}
         />
+    
         <Route 
         path="/contacto"
         element={<Contacto />}/>
@@ -35,5 +39,6 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    </CartProvider>
   );
 }

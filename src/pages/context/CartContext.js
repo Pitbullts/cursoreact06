@@ -1,4 +1,5 @@
 import { createContext, useState} from 'react';
+import imgs from "../../assets/img/items/itemsImg";
 
 export const CartContext = createContext({})
 
@@ -146,7 +147,7 @@ export const CartProvider = ({ defaultValue = [], children}) => {
     }
 
     const isInCart = (id ) => {
-        return cart.find((element) => element.item.id ===id)
+        return cart.find((productos) => productos.id ===id)
     }
     const addToCart = (item, quantity) => {
         console.log(item)
@@ -173,14 +174,15 @@ export const CartProvider = ({ defaultValue = [], children}) => {
     }
 
     const context = {
-         Cart,
-         ClearCart,
-         SetCart
+      cart ,
+         clearCart,
+         setCart,
+         addToCart
     }
-}
+
 
 return (
     <Provider value={context}>
         {children}
         </Provider>
-)
+)}
