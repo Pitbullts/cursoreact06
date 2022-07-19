@@ -4,7 +4,7 @@ export const CartContext = createContext({})
 
 const {Provider} = CartContext;
 
-const productos = [
+export const productos = [
     {
         id: "0",
         nombre: "RTX 3090",
@@ -14,7 +14,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 4500,
         stock: 10,
-        quantity: 0
+        caja: 0
       },
       {
         id: "1",
@@ -25,7 +25,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 4000,
         stock: 5,
-        quantity: 0
+        caja: 0
       },
       {
         id: "2",
@@ -36,7 +36,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 3500,
         stock: 7,
-        quantity: 0
+        caja: 0
       },
       {
         id: "3",
@@ -47,7 +47,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 3000,
         stock: 8,
-        quantity: 0
+        caja: 0
       },
       {
         id: "4",
@@ -58,7 +58,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 2750,
         stock: 5,
-        quantity: 0
+        caja: 0
       },
       {
         id: "5",
@@ -69,7 +69,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 2500,
         stock: 3,
-        quantity: 0
+        caja: 0
       },
       {
         id: "6",
@@ -80,7 +80,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 2500,
         stock: 2,
-        quantity: 0
+        caja: 0
       },
       {
         id: "7",
@@ -91,7 +91,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 2500,
         stock: 4,
-        quantity: 0
+        caja: 0
       },
       {
         id: "8",
@@ -102,7 +102,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 2500,
         stock: 7,
-        quantity: 0
+        caja: 0
       },
       {
         id: "9",
@@ -113,7 +113,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 2500,
         stock: 12,
-        quantity: 0
+        caja: 0
       },
       {
         id: "10",
@@ -124,7 +124,7 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 2000,
         stock: 6,
-        quantity: 0
+        caja: 0
       },
       {
         id: "11",
@@ -135,24 +135,26 @@ const productos = [
         descripcion: "Descripcion del objeto",
         precio: 2500,
         stock: 18,
-        quantity: 0
+        caja: 0
       },
 ];
 export const CartProvider = ({ defaultValue = [], children}) => {
     const [cart, setCart] = useState(defaultValue);
 
-
+    const clearCart = () => {
+        setCart([]);
+    }
 
     const isInCart = (id ) => {
         return cart.find((productos) => productos.id === id)
     }
-    const addToCart = (producto, quantity) => {
-      console.log('este es el :' + producto)
+    const addToCart = (item, quantity) => {
+        console.log(item)
         if(isInCart(productos.id)) {
             const newCart = [...cart]
                 for( const productos of newCart) {
                         if(productos.id === productos.id) {
-                            productos.quantity = productos.quantity + quantity;
+                            productos.caja = productos.caja + quantity;
                         }
                 }
                 setCart(newCart);
@@ -162,8 +164,9 @@ export const CartProvider = ({ defaultValue = [], children}) => {
             [
                     ...cart,
                     {
-                        IdProd: producto,
+                        item: item,
                         quantity: quantity,
+                       
                     }
             ]
         )
@@ -172,7 +175,7 @@ export const CartProvider = ({ defaultValue = [], children}) => {
 
     const context = {
       cart ,
-
+         clearCart,
          setCart,
          addToCart
     }

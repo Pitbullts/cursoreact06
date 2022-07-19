@@ -1,10 +1,9 @@
-import { useState, UseFfect, useContext, useEffect} from 'react';
+import {useContext, useEffect} from 'react';
 import { CartContext } from './context/CartContext';
 
 
 function CartPage() {
-  const [cartFetch, setCartFetch] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+
   const context = useContext(CartContext);
 
 
@@ -18,11 +17,11 @@ useEffect(() => {
             <h1 className="center"> Pagina de Carrito</h1>
             <div className='center'>
                 {context.cart.map(cartItem => (
-                  <div key= {cartItem.id}> 
+                  <div key= {cartItem.item}> 
                     <div>
-                      <p>{cartItem.id}</p>
-                      <p>- ${cartItem.precio}</p>
-                      <p>{cartItem.quantity}</p>
+                      <p>ID:{cartItem.item}</p>
+                      <p>Precio: ${cartItem.precio}</p>
+                      <p>Cantidad: {cartItem.quantity}</p>
                            (
                 )
                   
