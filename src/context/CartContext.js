@@ -1,9 +1,8 @@
-import { createContext, useState} from 'react';
-import {productos } from '../components/data/data';
-export const CartContext = createContext({})
+import { createContext, useState } from "react";
+import { productos } from "../components/data/data";
+export const CartContext = createContext({});
 
-const {Provider} = CartContext;
-
+const { Provider } = CartContext;
 
 export const CartProvider = ({ defaultValue = [], children}) => {
     const [cart, setCart] = useState(defaultValue);
@@ -21,7 +20,7 @@ export const CartProvider = ({ defaultValue = [], children}) => {
             const newCart = [...cart]
                 for( const productos of newCart) {
                         if(productos.id === productos.id) {
-                            productos.caja = productos.caja + quantity;
+                            productos.quantity = productos.quantity + quantity;
                         }
                 }
                 setCart(newCart);
@@ -42,17 +41,12 @@ export const CartProvider = ({ defaultValue = [], children}) => {
         )
     }
     }
+  const context = {
+    cart,
+    clearCart,
+    setCart,
+    addToCart,
+  };
 
-    const context = {
-      cart ,
-         clearCart,
-         setCart,
-         addToCart
-    }
-
-
-return (
-    <Provider value={context}>
-        {children}
-        </Provider>
-)}
+  return <Provider value={context}>{children}</Provider>;
+};

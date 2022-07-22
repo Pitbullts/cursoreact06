@@ -2,7 +2,7 @@ import React from "react";
 import ItemCount from "../card/ItemCount";
 import "../../css/card/Item.css";
 import {Link} from 'react-router-dom';
-import { useContext, useEffect, useState} from 'react';
+import { useContext, useState} from 'react';
 import {CartContext} from '../../../context/CartContext'
 
 export const ItemDetail = ({
@@ -25,7 +25,7 @@ const [purchasedCompleted, setPurchaseCompleted] = useState(false);
   const onAdd = (count) => {
 
     setPurchaseCompleted(true);
-    addToCart(id, count,  nombre, precio);
+    addToCart(id, count,  nombre, precio, caja);
   }
 
 
@@ -39,9 +39,17 @@ const [purchasedCompleted, setPurchaseCompleted] = useState(false);
         <p>Descripcion: {descripcion}</p>
         <p>Categoria: {categoria}</p>
         <h2>Precio: ${precio}</h2>
-        <ItemCount stock={stock} initial="1" onAdd={onAdd} />
-
-       <Link to="/cartpage"> <button className="btn btn-success">Terminar mi compra</button></Link>
+        {   /* Nota aparte, Tengo algun bardo con el onadd por que no puedo añadir mas de 1 solo al carrito */ }
+        
+          {purchasedCompleted ? (
+            <div>
+             <Link to="/cartpage" className="btn btn-success"> Terminar mi compra</Link>
+             <Link to="/catalogo" className="btn btn-danger"> Seguir comprando </Link>
+             </div>
+          ) : (
+            <ItemCount stock={stock} initial="1" onAdd={onAdd} />
+          ) 
+}
       </section>
     </div>
   );
