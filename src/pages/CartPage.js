@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 function CartPage() {
   const { cart, clearCart, } = useContext(CartContext);
-  
-  if (cart.lenght === 0) {
+
+  if (cart.length === 0) {
     return (
       <div className="center">
       <h2> El Carrito esta vacio, ve y compra algo</h2>
@@ -16,26 +16,26 @@ function CartPage() {
     );
   } else {
     return (
+
       <div>
-      <h1 className="center"> Pagina de Carrito</h1>
-      <div className="center">
-        {cart.map((cartItem) => cartItem?.nombre (
-          <div key={cartItem.item}>
-            <div>
-              <p>ID:{cartItem.item}</p>
-              <p>Nombre:{cartItem.nombre}</p>
-              <p>Precio: ${cartItem.precio}</p>
-              <p>Cantidad: {cartItem.quantity}</p>
-              
+        <h1 className="center"> Pagina de Carrito</h1>
+        <div className="center">
+          {cart.map((cartItem) => (
+            <div key={cartItem.item}>
+              <div>
+                <p>ID:{cartItem.item}</p>
+                <p>Nombre:{cartItem.nombre}</p>
+                <p>Precio: ${cartItem.precio}</p>
+                <p>Cantidad: {cartItem.quantity}</p>
+              </div>
             </div>
-          </div>
-          
-        )) }
-  <button onClick={clearCart}>Vaciar Carrito</button>
-      
+          ))}
+
+          <button onClick={clearCart}>Vaciar Carrito</button>
+        </div>
       </div>
-    </div>
-      
+
+   
     );
   }
 }
