@@ -3,7 +3,7 @@ import ItemCount from "../card/ItemCount";
 import "../../css/card/Item.css";
 import {Link} from 'react-router-dom';
 import { useContext, useEffect, useState} from 'react';
-import {CartContext} from '../../../pages/context/CartContext'
+import {CartContext} from '../../../context/CartContext'
 
 export const ItemDetail = ({
   id,
@@ -25,7 +25,7 @@ const [purchasedCompleted, setPurchaseCompleted] = useState(false);
   const onAdd = (count) => {
 
     setPurchaseCompleted(true);
-    addToCart(id, count);
+    addToCart(id, count,  nombre, precio);
   }
 
 

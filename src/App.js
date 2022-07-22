@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 import Home from "./pages/home/Home";
 import CartPage from "./pages/CartPage";
 import Contacto from './pages/Contacto';
-import { CartProvider} from './pages/context/CartContext';
+import { CartProvider} from './context/CartContext';
 
 export default function App() {
   return (
