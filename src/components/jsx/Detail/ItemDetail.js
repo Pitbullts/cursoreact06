@@ -19,13 +19,24 @@ export const ItemDetail = ({
 
 const { addToCart } = useContext(CartContext);
 const [purchasedCompleted, setPurchaseCompleted] = useState(false);
-
+const [quantity, setQuantity] = useState(0);
 
   
-  const onAdd = (count) => {
-
+  const onAdd = (quantity) => {
+    setQuantity(quantity)
     setPurchaseCompleted(true);
-    addToCart(id, count,  nombre, precio, caja);
+    const productToAdd = {
+      id,
+      nombre,
+      categoria,
+      imagenID,
+      precio,
+      descripcion,
+      imagenALT,
+      stock
+    
+    }
+    addToCart(productToAdd, quantity);
   }
 
 
@@ -41,7 +52,7 @@ const [purchasedCompleted, setPurchaseCompleted] = useState(false);
         <h2>Precio: ${precio}</h2>
         {   /* Nota aparte, Tengo algun bardo con el onadd por que no puedo añadir mas de 1 solo al carrito */ }
         
-          {purchasedCompleted ? (
+          {quantity ? (
             <div>
              <Link to="/cartpage" className="btn btn-success"> Terminar mi compra</Link>
              <Link to="/catalogo" className="btn btn-danger"> Seguir comprando </Link>

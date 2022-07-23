@@ -2,7 +2,10 @@ import "../../css/navbar/navbar.css";
 import logo from "../../../assets/pirulologo.png";
 import CartWidget from "./CartWidget";
 import { Link, NavLink } from "react-router-dom";
+import { useContext } from 'react';
+import {CartContext} from '../../../context/CartContext';
 function NavBar() {
+  const { getQuantity } = useContext(CartContext);
   return (
     <header>
       <div className="nav-bg">
@@ -41,7 +44,9 @@ function NavBar() {
               Contacto
             </NavLink>
           </div>
-          <CartWidget />
+          <div>
+        <h2> <CartWidget /> cantidad: {getQuantity} </h2>
+          </div>
         </nav>
       </div>
     </header>

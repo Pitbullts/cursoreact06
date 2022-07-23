@@ -10,42 +10,55 @@ export const CartProvider = ({ defaultValue = [], children}) => {
     const clearCart = () => {
         setCart([]);
     }
+    const removeItem = (id) =>  {
+        const deleteItem = cart.filter(elem => elem.id !== id);
+        setCart(deleteItem)
+    }
+
+
 
     const isInCart = (id ) => {
         return cart.find((productos) => productos.id === id)
     }
-    const addToCart = (item, quantity, nombre, precio) => {
-        console.log(item)
-        if(isInCart(productos.id)) {
-            const newCart = [...cart]
-                for( const productos of newCart) {
-                        if(productos.id === productos.id) {
-                            productos.quantity = productos.quantity + quantity;
-                        }
+        const addToCart = (item, quantity) => {
+                const newProd = {
+                    ...item,
+                    quantity
                 }
-                setCart(newCart);
-     } else {
+                if (isInCart(newProd.id)){
+                    cart.map(elem => {
+                        if(elem.id === newProd.id) {
+                            elem.quantity += newProd.quantity
+                        }
+                        return elem
+                    })
+                } else {
+                    setCart([...cart, newProd])
+                }
+ 
+        }
 
-          setCart(
-            [
-                    ...cart,
-                    {
-                        item: item,
-                        quantity: quantity,
-                        precio: precio,
-                        nombre: nombre,
-                       
-                       
-                    }
-            ]
-        )
-    }
-    }
+        const getTotal = () => {
+            let total = 0
+                cart.forEach((elem) => {
+                    total = total + (elem.quantity * elem.precio)
+                })
+                    return total
+        }
+
+      const getQuantity = () => {
+        let cantidad = 0
+            cart.forEach((elem) => cantidad = cantidad + elem.quantity)
+            return cantidad
+      }
   const context = {
     cart,
     clearCart,
     setCart,
     addToCart,
+    removeItem,
+    getTotal,
+    getQuantity
   };
 
   return <Provider value={context}>{children}</Provider>;
