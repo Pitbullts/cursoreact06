@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ItemList } from "./ItemList";
 import { productos } from "../../data/data";
-
 import { useParams } from "react-router-dom";
+import { CartContext } from "../../../context/CartContext";
 
 export const ItemListContainer = ({ greeting }) => {
+  const { productosFetch } = useContext(CartContext);
+
+
   const [items, setItems] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -35,7 +38,7 @@ export const ItemListContainer = ({ greeting }) => {
   ) : (
     <>
       <h3 style={{ textAlign: "center" }}>{greeting}</h3>
-      <ItemList items={items} />
+      <ItemList items={productosFetch} />
     </>
   );
 };

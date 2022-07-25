@@ -1,10 +1,29 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { getDocs, getFirestore, collection} from 'firebase/firestore';
+
 import { productos } from "../components/data/data";
 export const CartContext = createContext({});
+
 
 const { Provider } = CartContext;
 
 export const CartProvider = ({ defaultValue = [], children}) => {
+
+    const [productosFetch, setProductosFetch] = useState();
+
+    useEffect(() => {
+      const db = getFirestore();
+    
+      const productosinfo = collection(db, "productos")
+    
+      getDocs(productosinfo).then((informacion) => {
+    
+            setProductosFetch(informacion.docs.map((doc) => ({ id: doc.id, ...doc.data()}) ))
+    
+      })
+    }, [])
+
+
     const [cart, setCart] = useState(defaultValue);
 
     const clearCart = () => {
@@ -58,7 +77,8 @@ export const CartProvider = ({ defaultValue = [], children}) => {
     addToCart,
     removeItem,
     getTotal,
-    getQuantity
+    getQuantity,
+    productosFetch
   };
 
   return <Provider value={context}>{children}</Provider>;

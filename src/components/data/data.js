@@ -1,4 +1,18 @@
 import imgs from "../../assets/img/items/itemsImg";
+/*const [productosFetch, setProductosFetch] = useState();
+
+useEffect(() => {
+  const db = getFirestore();
+
+  const productostest = collection(db, "productos")
+
+  getDocs(productostest).then((informacion) => {
+
+        setProductosFetch(informacion.docs.map((doc) => doc.data()))
+
+  })
+}, [])
+*/
 
 export const productos = [
   {
