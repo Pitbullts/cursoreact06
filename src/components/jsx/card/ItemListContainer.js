@@ -1,14 +1,20 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { ItemList } from "./ItemList";
-import { productos } from "../../data/data";
+
 import { useParams } from "react-router-dom";
-import { CartContext } from "../../../context/CartContext";
+
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where
+} from "firebase/firestore";
 
 export const ItemListContainer = ({ greeting }) => {
-  const { productosFetch } = useContext(CartContext);
 
 
-  const [items, setItems] = useState([]);
+  const [filters, setFilters] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -16,21 +22,18 @@ export const ItemListContainer = ({ greeting }) => {
 
   useEffect(() => {
     setLoading(true);
-    const getProducts = new Promise((resolve) => {
-      setTimeout(() => {
-        const myPruducts = categoriaID
-          ? productos.filter((item) => item.categoria === categoriaID)
-          : productos;
+    const db = getFirestore();
 
-        resolve(myPruducts);
-      }, 1000);
+    const q = query(
+      collection(db, "productos"),
+      where("categoria", "=", categoriaID)
+    );
+    getDocs(q).then((prodFiltrados) => {
+      setFilters(
+        prodFiltrados.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+      );
     });
-
-    getProducts
-      .then((res) => {
-        setItems(res);
-      })
-      .finally(() => setLoading(false));
+    getDocs.finally(() => setLoading(false))
   }, [categoriaID]);
 
   return loading ? (
@@ -38,7 +41,7 @@ export const ItemListContainer = ({ greeting }) => {
   ) : (
     <>
       <h3 style={{ textAlign: "center" }}>{greeting}</h3>
-      <ItemList items={productosFetch} />
+      <ItemList items={filters} />
     </>
   );
 };
