@@ -40,17 +40,17 @@ const [quantity, setQuantity] = useState(0);
   }
 
 
-  //   <button onClick={() => console.log(nombre + space + id + space + precio + space + "test")} className="btn btn-success">
+ 
   return (
     <div className="text-center border">
       <img src={imagenID} alt={`${id}-${imagenALT}`} />
-      <section c>
+      <section>
         <h1>Producto: {nombre}</h1>
         <p>ID: {id}</p>
         <p>Descripcion: {descripcion}</p>
         <p>Categoria: {categoria}</p>
         <h2>Precio: ${precio}</h2>
-        {   /* Nota aparte, Tengo algun bardo con el onadd por que no puedo añadir mas de 1 solo al carrito */ }
+
         
           {quantity ? (
             <div>

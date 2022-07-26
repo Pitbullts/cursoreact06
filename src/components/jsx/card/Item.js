@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/card/Item.css'
 
-export const Item = ({ id, nombre, categoria, imagenID, precio,imagenALT, stock }) => {
+export const Item = ({ id, nombre, categoria, imagenID, precio,imagenALT }) => {
   return (
     <>
     <div className='card text-center cards-format'>
