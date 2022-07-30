@@ -18,13 +18,13 @@ export const ItemDetail = ({
 }) => {
 
 const { addToCart } = useContext(CartContext);
-const [purchasedCompleted, setPurchaseCompleted] = useState(false);
+
 const [quantity, setQuantity] = useState(0);
 
   
   const onAdd = (quantity) => {
     setQuantity(quantity)
-    setPurchaseCompleted(true);
+
     const productToAdd = {
       id,
       nombre,

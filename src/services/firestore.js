@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+/*
 import {
   getDocs,
   getFirestore,
@@ -13,22 +13,9 @@ import {
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDt9b2MOKFO37a6xnLlacbcolyZwmhVguI",
-  authDomain: "coderhouse-react-eccomerce.firebaseapp.com",
-  projectId: "coderhouse-react-eccomerce",
-  storageBucket: "coderhouse-react-eccomerce.appspot.com",
-  messagingSenderId: "922812942972",
-  appId: "1:922812942972:web:9e992166cbaa6affdb57f9",
-};
 
-const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
-
-export function testDB() {
-  console.log(db);
-}
 
 export async function getAllProducts() {
   const productsCollectionRef = collection(db, "productos");
@@ -48,11 +35,17 @@ export async function getAllProducts() {
 
 export async function getProduct(id) {
   const productsCollectionRef = collection(db, "productos");
-    const docRef = doc(productsCollectionRef, id)
+  console.log("testeo db" + db)
+    const docRef = doc(productsCollectionRef, id);
 
   const docSnapshot = await getDoc(docRef);
+    
 
   return docSnapshot.data();
+
+
+  
 }
 
 export default db;
+*/

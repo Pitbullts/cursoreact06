@@ -2,32 +2,41 @@ import React, { useState, useEffect } from "react";
 import { ItemDetail } from "./ItemDetail";
 
 import { useParams } from "react-router-dom";
-import { getProduct } from "../../../services/firestore";
+import {
+  getFirestore,
+  getDoc,
+  doc,
+} from "firebase/firestore";
+
 
 export const ItemDetailContainer = () => {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState();
  
 
   const { id } = useParams();
   const [loading, setLoading] = useState(true)
 
+  useEffect( () =>{
 
- useEffect(() => {
-  setLoading(true)
-  getProduct(id)
-  .then ( (itemsPromise) => {
-    setProduct(itemsPromise);
+    const db = getFirestore();
     
-  })
-  .catch((errorMsg) => {
-    console.error(errorMsg);
-  })
-  .finally(() => {
-    setLoading(false);
-  })
- },
- [id]
- );
+    const itemRef = doc(db, "productos", (id))
+    
+    getDoc(itemRef).then ((snapshot) => {
+    
+    if(snapshot.exists()){
+    
+    setProduct(snapshot.data())
+    
+    }
+    
+    }
+    
+    
+    )
+    .finally(()=> setLoading(false)) 
+    
+    }, [id] );
 
   return (
     <>

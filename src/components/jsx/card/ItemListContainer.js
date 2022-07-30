@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { ItemList } from "./ItemList";
 import { useParams } from "react-router-dom";
-import { getAllProducts } from '../../../services/firestore';
+
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 export const ItemListContainer = ({ greeting }) => {
-  let { categoriaID } = useParams();
+const {id} = useParams()
   
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState({});
   const [isloading, setIsLoading] = useState(true);
 
  useEffect(() => {
-  getAllProducts().then( data => {
-    console.log("item list cont", data)
-    setIsLoading(false);
-    setItems(data);
-  })
-  .catch( (errorMsg) => {
-    console.log(errorMsg);
-  })
+
+    const db = getFirestore();
+    const productosRef = collection(db, "productos");
+      getDocs(productosRef).then((snapshot) =>{
+        setItems(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data() })))
+      })
+      .finally(() => setIsLoading(false))
  }, 
- [categoriaID]
+ [id]
  );
 
   return isloading? (
