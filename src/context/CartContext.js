@@ -45,8 +45,8 @@ export const CartProvider = ({ defaultValue = [], children}) => {
 
         const getTotal = () => {
             let total = 0
-                cart.forEach((elem) => {
-                    total = total + (elem.quantity * elem.precio)
+                cart.forEach((item) => {
+                    total = total + (item.quantity * item.item.precio)
                 })
                     return total
         }
