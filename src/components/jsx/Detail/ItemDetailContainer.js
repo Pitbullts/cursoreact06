@@ -1,32 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { ItemDetail } from "./ItemDetail";
-import { productos } from "../../data/data";
+
 import { useParams } from "react-router-dom";
+import {
+  getFirestore,
+  getDoc,
+  doc,
+  collection
+} from "firebase/firestore";
+
 
 export const ItemDetailContainer = () => {
-  const [product, setProduct] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [item, setItem] = useState();
+ 
 
-  const { productoId } = useParams();
+  const { id } = useParams();
+  const [loading, setLoading] = useState()
 
-  console.log(productoId);
+// No logro hacerlo funcionar con el parametro de ID, si bien me lleva al route correcto
+// no puedo cargarlo linea 28.
 
-  useEffect(() => {
+  useEffect( () =>{
     setLoading(true);
-    const getItems = new Promise((resolve) => {
-      setTimeout(() => {
-        const myData = productos.find((producto) => producto.id === productoId);
+    const db = getFirestore();
+    
+    const collectionProductos = collection(db, "productos")
+    const refeDelDoc = doc(collectionProductos, "0FTBCMA9lfnngNrPk3Oq")
+    const consulta = getDoc(refeDelDoc)
 
-        resolve(myData);
-      }, 1000);
-    });
-
-    getItems
-      .then((res) => {
-        setProduct(res);
+    consulta
+      .then(resultado=>{
+        console.log(resultado.id)
+        console.log(resultado.data())
+        const producto = resultado.data()
+        //console.log(producto)
+        setItem(producto)
+        setLoading(false)
       })
-      .finally(() => setLoading(false));
-  }, [productoId]);
+      .catch((error)=>{
+        console.log(error)
+      })
 
-  return loading ? <h2>CARGANDO...</h2> : <ItemDetail {...product} />;
+    .finally(()=> setLoading(false)) 
+    
+    }, [id] );
+
+  return (
+    <>
+    <section>
+      { loading ? <h1> Cargando ....</h1>  :  <ItemDetail item={item} />}
+    </section>
+    </>
+  )
 };

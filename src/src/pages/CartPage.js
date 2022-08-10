@@ -24,14 +24,14 @@ function CartPage() {
         <h1 className="center"> Pagina de Carrito</h1>
         <div className="center">
           {cart.map((cartItem) => (
-            <div key={cartItem.item.item} className="card  card-cart">
+            <div key={cartItem.item} className="card  card-cart">
               <div className="card-body cart-body">
-                <p className="card-title">ID:{cartItem.item.id}</p>
-                <p className="card-title">Nombre:{cartItem.item.nombre}</p>
+                <p className="card-title">ID:{cartItem.id}</p>
+                <p className="card-title">Nombre:{cartItem.nombre}</p>
 
-                <p className="card-text">Precio: ${cartItem.item.precio}</p>
+                <p className="card-text">Precio: ${cartItem.precio}</p>
                 <p className="card-text" >Cantidad: {cartItem.quantity}</p>
-                <button onClick={() => removeItem(cartItem.item.id)} className="btn btn-danger center"> Eliminar </button>
+                <button onClick={() => removeItem(cartItem.id)} className="btn btn-danger center"> Eliminar </button>
               </div>
             </div>
           ))}

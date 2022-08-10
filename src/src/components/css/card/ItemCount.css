@@ -1,0 +1,25 @@
+#contador {
+    font-size: 2rem;
+}
+
+
+.contador {
+    display: flex;
+    font-size: 2rem;
+    justify-content: center;
+    gap: 8px;
+}
+
+button {
+    font-size: 2rem;
+}
+
+
+.botones-2 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    gap: 1rem;
+}

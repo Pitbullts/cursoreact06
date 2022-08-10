@@ -1,41 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { ItemList } from "./ItemList";
-import { productos } from "../../data/data";
-
 import { useParams } from "react-router-dom";
 
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+
 export const ItemListContainer = ({ greeting }) => {
-  const [items, setItems] = useState([]);
+const {id} = useParams()
+  
+  const [items, setItems] = useState({});
+  const [isloading, setIsLoading] = useState(true);
 
-  const [loading, setLoading] = useState(true);
+ useEffect(() => {
 
-  const { categoriaID } = useParams();
-
-  useEffect(() => {
-    setLoading(true);
-    const getProducts = new Promise((resolve) => {
-      setTimeout(() => {
-        const myPruducts = categoriaID
-          ? productos.filter((item) => item.categoria === categoriaID)
-          : productos;
-
-        resolve(myPruducts);
-      }, 1000);
-    });
-
-    getProducts
-      .then((res) => {
-        setItems(res);
+    const db = getFirestore();
+    const productosRef = collection(db, "productos");
+      getDocs(productosRef).then((snapshot) =>{
+        setItems(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data() })))
       })
-      .finally(() => setLoading(false));
-  }, [categoriaID]);
+      .finally(() => setIsLoading(false))
+ }, 
+ [id]
+ );
 
-  return loading ? (
+  return isloading? (
     <h2>CARGANDO...</h2>
   ) : (
     <>
       <h3 style={{ textAlign: "center" }}>{greeting}</h3>
       <ItemList items={items} />
+      
     </>
   );
 };

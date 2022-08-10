@@ -1,0 +1,15 @@
+
+
+.card {
+    max-width: 40%;
+    height: auto;
+    margin: 1rem 0 1rem 0;
+}
+.card-header {
+    font-size: 2rem;
+}
+
+.card, .card-header, .card-body {
+    align-items: center;
+    justify-content: center;
+}
