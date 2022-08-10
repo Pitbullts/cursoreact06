@@ -8,12 +8,6 @@ import {CartContext} from '../../../context/CartContext'
 export const ItemDetail = ({
   item,
   id,
-  nombre,
-  categoria,
-  imagenID,
-  precio,
-  descripcion,
-  imagenALT,
   stock
 }) => {
 
@@ -28,13 +22,7 @@ const [quantity, setQuantity] = useState(0);
 
     const productToAdd = {
       item,
-      id,
-      nombre,
-      categoria,
-      imagenID,
-      precio,
-      descripcion,
-      imagenALT,
+
       stock
     
     }
@@ -53,7 +41,7 @@ useEffect(()=> {
   if(loading){
     return (
       <div className="text-center border">
-      <img src={item.imagenID} alt={`${id}-${imagenALT}`} />
+      <img src={item.imagenID} alt={`${id}-${item.imagenALT}`} />
       <section>
         <h1>Producto: {item.nombre}</h1>
         <p>ID: {item.id}</p>

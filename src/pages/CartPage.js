@@ -1,11 +1,46 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import '../components/css/body/cartPage.css'
-
+import { collection , addDoc , serverTimestamp, getFirestore } from "firebase/firestore"
 
 function CartPage() {
   const { cart, clearCart, removeItem, getTotal } = useContext(CartContext);
+
+
+  const [idCompra,setIdCompra] = useState("")
+
+  const handleBuy = () => {
+  
+    const db = getFirestore()
+
+    const collectionOrdenes = collection(db,"orders")
+
+    const orderData = {
+      buyer : {
+        nombre : "Raulito",
+        phone : "555555555",
+        email : "test@test.com"
+      },
+      items : [{id:1,titulo:"ITEM TEST"}],
+      date : serverTimestamp(),
+      total : 100
+    }
+
+    const consulta = addDoc(collectionOrdenes,orderData)
+
+    consulta
+      .then(resultado=>{
+        setIdCompra(resultado.id)
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+
+
+  }
+
+
 
   if (cart.length === 0) {
     return (
@@ -38,6 +73,10 @@ function CartPage() {
 
           <h3 className="button-vaciar">Total: ${getTotal()}</h3>
           <button onClick={clearCart} className="button-vaciar btn btn-primary">Vaciar Carrito</button>
+          <br></br>
+          <span></span>
+          {idCompra&&<p>Su compra es : {idCompra}</p>}
+          <button className="btn btn-success" onClick={handleBuy}>Finalizar compra</button>
         </div>
       </div>
       </>
