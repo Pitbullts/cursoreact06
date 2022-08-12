@@ -30,10 +30,10 @@ export const CartProvider = ({ defaultValue = [], children}) => {
                     ...item,
                     quantity
                 }
-                if (isInCart(newProd.id)){
+                if (isInCart(newProd.item.id)){
                     cart.map(elem => {
-                        if(elem.id === newProd.id) {
-                            elem.quantity += newProd.quantity
+                        if(elem.id === newProd.item.id) {
+                            elem.quantity += newProd.item.quantity
                         }
                         return elem
                     })
