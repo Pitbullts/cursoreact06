@@ -66,7 +66,7 @@ function CartPage() {
 
                 <p className="card-text">Precio: ${cartItem.item.precio}</p>
                 <p className="card-text" >Cantidad: {cartItem.quantity}</p>
-                <button onClick={() => removeItem(cartItem.item.id)} className="btn btn-danger center"> Eliminar </button>
+                <button onClick={() => removeItem(cartItem.id)} className="btn btn-danger center"> Eliminar </button>
               </div>
             </div>
           ))}
